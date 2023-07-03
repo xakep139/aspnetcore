@@ -5,9 +5,16 @@ using System.Reflection;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Http.Metadata;
 using Microsoft.AspNetCore.Mvc;
+using MinimalSample;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddMvcCore();
+builder.Services.AddSingleton<EnrichmentMiddleware>();
+builder.Services.AddHostedService<MetricListenerService>();
+builder.Services.AddSingleton<IHttpMetricEnricher, CustomMetricEnricher>();
 var app = builder.Build();
+
+app.UseMiddleware<EnrichmentMiddleware>();
 
 app.Logger.LogInformation($"Current process ID: {Environment.ProcessId}");
 
@@ -88,11 +95,11 @@ app.MapGet("/problem/{problemType}", (string problemType) => problemType switch
         "objectValidation" => Results.Problem(new HttpValidationProblemDetails(errors) { Status = 400, Extensions = { { "traceId", "traceId123" } } }),
         "validationTyped" => TypedResults.ValidationProblem(errors, extensions: extensions),
         _ => TypedResults.NotFound()
-
     });
 
 app.MapPost("/todos", (TodoBindable todo) => todo);
 app.MapGet("/todos", () => new Todo[] { new Todo(1, "Walk the dog"), new Todo(2, "Come back home") });
+app.MapControllers();
 
 app.Run();
 

@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="OpenTelemetry" />
+    <Reference Include="OpenTelemetry.Exporter.Console" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Microsoft.AspNetCore" />
     <Reference Include="Microsoft.AspNetCore.Diagnostics" />
     <Reference Include="Microsoft.AspNetCore.Hosting" />
@@ -19,6 +24,9 @@
 
   <ItemGroup>
     <ProjectReference Include="$(RepoRoot)/src/Http/Http.Extensions/gen/Microsoft.AspNetCore.Http.RequestDelegateGenerator.csproj" OutputItemType="Analyzer" />
+    <ProjectReference Include="..\..\..\..\..\..\Users\nbalabaev\source\SDK\src\Extensions\Enrichment.Abstractions\Enrichment.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\Users\nbalabaev\source\SDK\src\Extensions\Pools\Pools.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\Users\nbalabaev\source\SDK\src\Extensions\Telemetry.Internal\Telemetry.Internal.csproj" />
   </ItemGroup>
 
 </Project>
