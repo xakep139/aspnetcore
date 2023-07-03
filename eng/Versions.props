@@ -333,5 +333,7 @@
     <DotnetDumpVersion>6.0.322601</DotnetDumpVersion>
     <DotnetServeVersion>1.10.93</DotnetServeVersion>
     <MicrosoftPlaywrightCLIVersion>1.2.3</MicrosoftPlaywrightCLIVersion>
+    <OpenTelemetryExporterConsoleVersion>1.4.0</OpenTelemetryExporterConsoleVersion>
+    <OpenTelemetryVersion>1.4.0</OpenTelemetryVersion>
   </PropertyGroup>
 </Project>

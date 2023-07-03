@@ -225,6 +225,8 @@ and are generated based on the last package release.
     <LatestPackageReference Include="xunit.assert" />
     <LatestPackageReference Include="xunit.extensibility.core" />
     <LatestPackageReference Include="xunit.extensibility.execution" />
+    <LatestPackageReference Include="OpenTelemetry.Exporter.Console" />
+    <LatestPackageReference Include="OpenTelemetry" />
   </ItemGroup>
 
   <ItemGroup Label="Dependencies with versions.">
